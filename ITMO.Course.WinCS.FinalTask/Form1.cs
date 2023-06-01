@@ -4,10 +4,11 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Calculator
 {
-		public class Calc : System.Windows.Forms.Form
+	public class Calc : Form
 	{
 		private System.Windows.Forms.TextBox txtOutput;
 		private System.Windows.Forms.Button btn_sbros;
@@ -29,11 +30,11 @@ namespace Calculator
 		private System.Windows.Forms.Button btn2;
 		private System.Windows.Forms.Button btn1;
 		private System.ComponentModel.Container components = null;
-		/// <summary>
-		/// Объявляем и инициализируем переменные, которые будут
-		///  возникать на экране при нажатии соответствующих кнопок.
-		/// </summary>
-		private const string odin = "1";
+        /// <summary>
+        /// Объявляем и инициализируем переменные, которые будут
+        ///  возникать на экране при нажатии соответствующих кнопок.
+        /// </summary>
+        private const string odin = "1";
 		private const string dva = "2";
 		private const string tri = "3";
 		private const string chetire = "4";
@@ -48,6 +49,7 @@ namespace Calculator
 		{
 			TopMost = true;
 			InitializeComponent();
+			Cursor = Cursors.Hand;
 			// При запуске приложения на экране будет нуль
 			txtOutput.Text = "0";
 		
@@ -66,6 +68,16 @@ namespace Calculator
 				}
 			}
 			base.Dispose( disposing );
+		}
+
+		private void txtOutput_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (!char.IsDigit(e.KeyChar))
+			{
+				e.Handled = true;
+				MessageBox.Show("Введите число");
+			}
+
 		}
 
 		#region Windows Form Designer generated code
@@ -106,11 +118,12 @@ namespace Calculator
             this.txtOutput.Size = new System.Drawing.Size(250, 26);
             this.txtOutput.TabIndex = 60;
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtOutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOutput_KeyPress);
             // 
             // btn_sbros
             // 
             this.btn_sbros.AccessibleName = "reset";
-            this.btn_sbros.Location = new System.Drawing.Point(204, 72);
+            this.btn_sbros.Location = new System.Drawing.Point(202, 120);
             this.btn_sbros.Name = "btn_sbros";
             this.btn_sbros.Size = new System.Drawing.Size(40, 80);
             this.btn_sbros.TabIndex = 0;
@@ -120,7 +133,7 @@ namespace Calculator
             // btnChangesign
             // 
             this.btnChangesign.AccessibleName = "change sign";
-            this.btnChangesign.Location = new System.Drawing.Point(68, 192);
+            this.btnChangesign.Location = new System.Drawing.Point(66, 240);
             this.btnChangesign.Name = "btnChangesign";
             this.btnChangesign.Size = new System.Drawing.Size(40, 40);
             this.btnChangesign.TabIndex = 58;
@@ -130,7 +143,7 @@ namespace Calculator
             // btnpoint
             // 
             this.btnpoint.AccessibleName = "point ";
-            this.btnpoint.Location = new System.Drawing.Point(108, 192);
+            this.btnpoint.Location = new System.Drawing.Point(106, 240);
             this.btnpoint.Name = "btnpoint";
             this.btnpoint.Size = new System.Drawing.Size(40, 40);
             this.btnpoint.TabIndex = 57;
@@ -141,7 +154,7 @@ namespace Calculator
             // 
             this.btn_ravno.AccessibleDescription = "ravno";
             this.btn_ravno.AccessibleName = "equal";
-            this.btn_ravno.Location = new System.Drawing.Point(204, 152);
+            this.btn_ravno.Location = new System.Drawing.Point(202, 200);
             this.btn_ravno.Name = "btn_ravno";
             this.btn_ravno.Size = new System.Drawing.Size(40, 80);
             this.btn_ravno.TabIndex = 56;
@@ -151,7 +164,7 @@ namespace Calculator
             // btn_delenie
             // 
             this.btn_delenie.AccessibleName = "divide ";
-            this.btn_delenie.Location = new System.Drawing.Point(164, 72);
+            this.btn_delenie.Location = new System.Drawing.Point(162, 120);
             this.btn_delenie.Name = "btn_delenie";
             this.btn_delenie.Size = new System.Drawing.Size(40, 40);
             this.btn_delenie.TabIndex = 55;
@@ -161,7 +174,7 @@ namespace Calculator
             // btn_umnojenie
             // 
             this.btn_umnojenie.AccessibleName = "multiply ";
-            this.btn_umnojenie.Location = new System.Drawing.Point(164, 112);
+            this.btn_umnojenie.Location = new System.Drawing.Point(162, 160);
             this.btn_umnojenie.Name = "btn_umnojenie";
             this.btn_umnojenie.Size = new System.Drawing.Size(40, 40);
             this.btn_umnojenie.TabIndex = 54;
@@ -171,7 +184,7 @@ namespace Calculator
             // btn_plus
             // 
             this.btn_plus.AccessibleName = "plus ";
-            this.btn_plus.Location = new System.Drawing.Point(164, 192);
+            this.btn_plus.Location = new System.Drawing.Point(162, 240);
             this.btn_plus.Name = "btn_plus";
             this.btn_plus.Size = new System.Drawing.Size(40, 40);
             this.btn_plus.TabIndex = 53;
@@ -181,7 +194,7 @@ namespace Calculator
             // btn_minus
             // 
             this.btn_minus.AccessibleName = "minus ";
-            this.btn_minus.Location = new System.Drawing.Point(164, 152);
+            this.btn_minus.Location = new System.Drawing.Point(162, 200);
             this.btn_minus.Name = "btn_minus";
             this.btn_minus.Size = new System.Drawing.Size(40, 40);
             this.btn_minus.TabIndex = 52;
@@ -191,7 +204,7 @@ namespace Calculator
             // btn0
             // 
             this.btn0.AccessibleName = "zero";
-            this.btn0.Location = new System.Drawing.Point(28, 192);
+            this.btn0.Location = new System.Drawing.Point(26, 240);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(40, 40);
             this.btn0.TabIndex = 51;
@@ -201,7 +214,7 @@ namespace Calculator
             // btn9
             // 
             this.btn9.AccessibleName = "nine ";
-            this.btn9.Location = new System.Drawing.Point(108, 72);
+            this.btn9.Location = new System.Drawing.Point(106, 120);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(40, 40);
             this.btn9.TabIndex = 50;
@@ -211,7 +224,7 @@ namespace Calculator
             // btn8
             // 
             this.btn8.AccessibleName = "eight ";
-            this.btn8.Location = new System.Drawing.Point(68, 72);
+            this.btn8.Location = new System.Drawing.Point(66, 120);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(40, 40);
             this.btn8.TabIndex = 49;
@@ -221,7 +234,7 @@ namespace Calculator
             // btn7
             // 
             this.btn7.AccessibleName = "seven ";
-            this.btn7.Location = new System.Drawing.Point(28, 72);
+            this.btn7.Location = new System.Drawing.Point(26, 120);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(40, 40);
             this.btn7.TabIndex = 48;
@@ -231,7 +244,7 @@ namespace Calculator
             // btn6
             // 
             this.btn6.AccessibleName = "six ";
-            this.btn6.Location = new System.Drawing.Point(108, 112);
+            this.btn6.Location = new System.Drawing.Point(106, 160);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(40, 40);
             this.btn6.TabIndex = 47;
@@ -241,7 +254,7 @@ namespace Calculator
             // btn5
             // 
             this.btn5.AccessibleName = "five ";
-            this.btn5.Location = new System.Drawing.Point(68, 112);
+            this.btn5.Location = new System.Drawing.Point(66, 160);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(40, 40);
             this.btn5.TabIndex = 46;
@@ -251,7 +264,7 @@ namespace Calculator
             // btn4
             // 
             this.btn4.AccessibleName = "four ";
-            this.btn4.Location = new System.Drawing.Point(28, 112);
+            this.btn4.Location = new System.Drawing.Point(26, 160);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(40, 40);
             this.btn4.TabIndex = 45;
@@ -261,7 +274,7 @@ namespace Calculator
             // btn3
             // 
             this.btn3.AccessibleName = "three ";
-            this.btn3.Location = new System.Drawing.Point(108, 152);
+            this.btn3.Location = new System.Drawing.Point(106, 200);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(40, 40);
             this.btn3.TabIndex = 44;
@@ -271,7 +284,7 @@ namespace Calculator
             // btn2
             // 
             this.btn2.AccessibleName = "two ";
-            this.btn2.Location = new System.Drawing.Point(68, 152);
+            this.btn2.Location = new System.Drawing.Point(66, 200);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(40, 40);
             this.btn2.TabIndex = 43;
@@ -281,7 +294,7 @@ namespace Calculator
             // btn1
             // 
             this.btn1.AccessibleName = "one ";
-            this.btn1.Location = new System.Drawing.Point(28, 152);
+            this.btn1.Location = new System.Drawing.Point(26, 200);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(40, 40);
             this.btn1.TabIndex = 42;
@@ -291,7 +304,8 @@ namespace Calculator
             // Calc
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.ClientSize = new System.Drawing.Size(270, 244);
+            this.BackColor = System.Drawing.Color.DarkGray;
+            this.ClientSize = new System.Drawing.Size(270, 300);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btn_sbros);
             this.Controls.Add(this.btnChangesign);
@@ -316,7 +330,7 @@ namespace Calculator
             this.MaximizeBox = false;
             this.Name = "Calc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Калькулятор 1.0";
+            this.Text = "Calc Morgunov";
             this.ResumeLayout(false);
             this.PerformLayout();
 
