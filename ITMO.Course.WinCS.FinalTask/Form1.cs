@@ -11,15 +11,15 @@ namespace Calculator
 	public class Calc : Form
 	{
 		private System.Windows.Forms.TextBox txtOutput;
-		private System.Windows.Forms.Button btn_sbros;
-		private System.Windows.Forms.Button btnChangesign;
+		private System.Windows.Forms.Button btn_sbros; // btn_clear
+        private System.Windows.Forms.Button btnChangesign;
 		private System.Windows.Forms.Button btnpoint;
-		private System.Windows.Forms.Button btn_ravno;
-		private System.Windows.Forms.Button btn_delenie;
-		private System.Windows.Forms.Button btn_umnojenie;
-		private System.Windows.Forms.Button btn_plus;
-		private System.Windows.Forms.Button btn_minus;
-		private System.Windows.Forms.Button btn0;
+		private System.Windows.Forms.Button btn_ravno; // btn_result
+        private System.Windows.Forms.Button btn_delenie; // btn_division
+        private System.Windows.Forms.Button btn_umnojenie; // btn_multiplication
+        private System.Windows.Forms.Button btn_plus; // btn_addition
+        private System.Windows.Forms.Button btn_minus; // btn_subtraction
+        private System.Windows.Forms.Button btn0;
 		private System.Windows.Forms.Button btn9;
 		private System.Windows.Forms.Button btn8;
 		private System.Windows.Forms.Button btn7;
@@ -43,7 +43,8 @@ namespace Calculator
 		private const string sem = "7";
 		private const string vosem = "8";
 		private const string devyat = "9";
-		private const string nul = "0";
+        private System.Windows.Forms.Button btn_;
+        private const string nul = "0";
 
 		public Calc()
 		{
@@ -89,14 +90,14 @@ namespace Calculator
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calc));
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btn_sbros = new System.Windows.Forms.Button();
+            this.btn_sbros = new System.Windows.Forms.Button(); // btn_clear
             this.btnChangesign = new System.Windows.Forms.Button();
             this.btnpoint = new System.Windows.Forms.Button();
-            this.btn_ravno = new System.Windows.Forms.Button();
-            this.btn_delenie = new System.Windows.Forms.Button();
-            this.btn_umnojenie = new System.Windows.Forms.Button();
-            this.btn_plus = new System.Windows.Forms.Button();
-            this.btn_minus = new System.Windows.Forms.Button();
+            this.btn_ravno = new System.Windows.Forms.Button(); // btn_result
+            this.btn_delenie = new System.Windows.Forms.Button(); // btn_division
+            this.btn_umnojenie = new System.Windows.Forms.Button(); // btn_multiplication
+            this.btn_plus = new System.Windows.Forms.Button(); // btn_addition 
+            this.btn_minus = new System.Windows.Forms.Button(); // btn_subtraction
             this.btn0 = new System.Windows.Forms.Button();
             this.btn9 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
@@ -107,6 +108,7 @@ namespace Calculator
             this.btn3 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
             this.btn1 = new System.Windows.Forms.Button();
+            this.btn_ = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtOutput
@@ -120,15 +122,15 @@ namespace Calculator
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtOutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOutput_KeyPress);
             // 
-            // btn_sbros
+            // btn_sbros // название ниже должно мен€тьс€ через интерфейс
             // 
-            this.btn_sbros.AccessibleName = "reset";
-            this.btn_sbros.Location = new System.Drawing.Point(202, 120);
-            this.btn_sbros.Name = "btn_sbros";
-            this.btn_sbros.Size = new System.Drawing.Size(40, 80);
-            this.btn_sbros.TabIndex = 0;
-            this.btn_sbros.Text = "C";
-            this.btn_sbros.Click += new System.EventHandler(this.btn_sbros_Click);
+            this.btn_sbros.AccessibleName = "reset"; // btn_clear
+            this.btn_sbros.Location = new System.Drawing.Point(202, 120); // btn_clear
+            this.btn_sbros.Name = "btn_sbros"; // btn_clear
+            this.btn_sbros.Size = new System.Drawing.Size(40, 80); // btn_clear
+            this.btn_sbros.TabIndex = 0; // btn_clear
+            this.btn_sbros.Text = "C"; // btn_clear
+            this.btn_sbros.Click += new System.EventHandler(this.btn_sbros_Click);// btn_clear х2
             // 
             // btnChangesign
             // 
@@ -301,11 +303,20 @@ namespace Calculator
             this.btn1.Text = "1";
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
+            // btn_
+            // 
+            this.btn_.AccessibleName = "divide ";
+            this.btn_.Location = new System.Drawing.Point(26, 56);
+            this.btn_.Name = "btn_";
+            this.btn_.Size = new System.Drawing.Size(40, 40);
+            this.btn_.TabIndex = 61;
+            // 
             // Calc
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(270, 300);
+            this.Controls.Add(this.btn_);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btn_sbros);
             this.Controls.Add(this.btnChangesign);
