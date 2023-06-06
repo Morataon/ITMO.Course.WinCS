@@ -11,14 +11,14 @@ namespace Calculator
 	public class Calc : Form
 	{
 		private System.Windows.Forms.TextBox txtOutput;
-		private System.Windows.Forms.Button btn_sbros; // btn_clear
+		private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Button btnChangesign;
 		private System.Windows.Forms.Button btnpoint;
-		private System.Windows.Forms.Button btn_ravno; // btn_result
-        private System.Windows.Forms.Button btn_delenie; // btn_division
-        private System.Windows.Forms.Button btn_umnojenie; // btn_multiplication
-        private System.Windows.Forms.Button btn_plus; // btn_addition
-        private System.Windows.Forms.Button btn_minus; // btn_subtraction
+		private System.Windows.Forms.Button btn_result;
+        private System.Windows.Forms.Button btn_division;
+        private System.Windows.Forms.Button btn_multiplication;
+        private System.Windows.Forms.Button btn_addition; 
+        private System.Windows.Forms.Button btn_subtraction;
         private System.Windows.Forms.Button btn0;
 		private System.Windows.Forms.Button btn9;
 		private System.Windows.Forms.Button btn8;
@@ -34,24 +34,24 @@ namespace Calculator
         /// Объявляем и инициализируем переменные, которые будут
         ///  возникать на экране при нажатии соответствующих кнопок.
         /// </summary>
-        private const string odin = "1";
-		private const string dva = "2";
-		private const string tri = "3";
-		private const string chetire = "4";
-		private const string pyat = "5";
-		private const string shest = "6";
-		private const string sem = "7";
-		private const string vosem = "8";
-		private const string devyat = "9";
+        private const string one = "1"; 
+		private const string two = "2"; 
+		private const string three = "3"; 
+		private const string four = "4"; 
+		private const string five = "5"; 
+		private const string six = "6";
+		private const string seven = "7";
+		private const string eight = "8"; 
+        private const string nine = "9"; 
         private System.Windows.Forms.Button btn_;
-        private const string nul = "0";
+        private const string zero = "0"; 
 
 		public Calc()
 		{
 			TopMost = true;
 			InitializeComponent();
 			Cursor = Cursors.Hand;
-			// При запуске приложения на экране будет нуль
+			// При запуске приложения на экране будет ноль
 			txtOutput.Text = "0";
 		
 		}
@@ -90,14 +90,14 @@ namespace Calculator
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calc));
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btn_sbros = new System.Windows.Forms.Button(); // btn_clear
+            this.btn_clear = new System.Windows.Forms.Button(); 
             this.btnChangesign = new System.Windows.Forms.Button();
             this.btnpoint = new System.Windows.Forms.Button();
-            this.btn_ravno = new System.Windows.Forms.Button(); // btn_result
-            this.btn_delenie = new System.Windows.Forms.Button(); // btn_division
-            this.btn_umnojenie = new System.Windows.Forms.Button(); // btn_multiplication
-            this.btn_plus = new System.Windows.Forms.Button(); // btn_addition 
-            this.btn_minus = new System.Windows.Forms.Button(); // btn_subtraction
+            this.btn_result = new System.Windows.Forms.Button(); 
+            this.btn_division = new System.Windows.Forms.Button(); 
+            this.btn_multiplication = new System.Windows.Forms.Button(); 
+            this.btn_addition = new System.Windows.Forms.Button();
+            this.btn_subtraction = new System.Windows.Forms.Button(); 
             this.btn0 = new System.Windows.Forms.Button();
             this.btn9 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
@@ -122,15 +122,15 @@ namespace Calculator
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtOutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOutput_KeyPress);
             // 
-            // btn_sbros // название ниже должно меняться через интерфейс
+            // btn_clear 
             // 
-            this.btn_sbros.AccessibleName = "reset"; // btn_clear
-            this.btn_sbros.Location = new System.Drawing.Point(202, 120); // btn_clear
-            this.btn_sbros.Name = "btn_sbros"; // btn_clear
-            this.btn_sbros.Size = new System.Drawing.Size(40, 80); // btn_clear
-            this.btn_sbros.TabIndex = 0; // btn_clear
-            this.btn_sbros.Text = "C"; // btn_clear
-            this.btn_sbros.Click += new System.EventHandler(this.btn_sbros_Click);// btn_clear х2
+            this.btn_clear.AccessibleName = "reset"; 
+            this.btn_clear.Location = new System.Drawing.Point(202, 120); 
+            this.btn_clear.Name = "btn_clear"; 
+            this.btn_clear.Size = new System.Drawing.Size(40, 80); 
+            this.btn_clear.TabIndex = 0; 
+            this.btn_clear.Text = "C"; 
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // btnChangesign
             // 
@@ -152,56 +152,56 @@ namespace Calculator
             this.btnpoint.Text = ",";
             this.btnpoint.Click += new System.EventHandler(this.btnpoint_Click);
             // 
-            // btn_ravno
+            // btn_result
             // 
-            this.btn_ravno.AccessibleDescription = "ravno";
-            this.btn_ravno.AccessibleName = "equal";
-            this.btn_ravno.Location = new System.Drawing.Point(202, 200);
-            this.btn_ravno.Name = "btn_ravno";
-            this.btn_ravno.Size = new System.Drawing.Size(40, 80);
-            this.btn_ravno.TabIndex = 56;
-            this.btn_ravno.Text = "=";
-            this.btn_ravno.Click += new System.EventHandler(this.btn_ravno_Click);
+            this.btn_result.AccessibleDescription = "ravno";
+            this.btn_result.AccessibleName = "equal";
+            this.btn_result.Location = new System.Drawing.Point(202, 200);
+            this.btn_result.Name = "btn_result";
+            this.btn_result.Size = new System.Drawing.Size(40, 80);
+            this.btn_result.TabIndex = 56;
+            this.btn_result.Text = "=";
+            this.btn_result.Click += new System.EventHandler(this.btn_result_Click);
             // 
-            // btn_delenie
+            // btn_division
             // 
-            this.btn_delenie.AccessibleName = "divide ";
-            this.btn_delenie.Location = new System.Drawing.Point(162, 120);
-            this.btn_delenie.Name = "btn_delenie";
-            this.btn_delenie.Size = new System.Drawing.Size(40, 40);
-            this.btn_delenie.TabIndex = 55;
-            this.btn_delenie.Text = "/";
-            this.btn_delenie.Click += new System.EventHandler(this.btn_delenie_Click);
+            this.btn_division.AccessibleName = "divide ";
+            this.btn_division.Location = new System.Drawing.Point(162, 120);
+            this.btn_division.Name = "btn_division";
+            this.btn_division.Size = new System.Drawing.Size(40, 40);
+            this.btn_division.TabIndex = 55;
+            this.btn_division.Text = "/";
+            this.btn_division.Click += new System.EventHandler(this.btn_division_Click);
             // 
-            // btn_umnojenie
+            // btn_multiplication
             // 
-            this.btn_umnojenie.AccessibleName = "multiply ";
-            this.btn_umnojenie.Location = new System.Drawing.Point(162, 160);
-            this.btn_umnojenie.Name = "btn_umnojenie";
-            this.btn_umnojenie.Size = new System.Drawing.Size(40, 40);
-            this.btn_umnojenie.TabIndex = 54;
-            this.btn_umnojenie.Text = "*";
-            this.btn_umnojenie.Click += new System.EventHandler(this.btn_umnojenie_Click);
+            this.btn_multiplication.AccessibleName = "multiply ";
+            this.btn_multiplication.Location = new System.Drawing.Point(162, 160);
+            this.btn_multiplication.Name = "btn_multiplication";
+            this.btn_multiplication.Size = new System.Drawing.Size(40, 40);
+            this.btn_multiplication.TabIndex = 54;
+            this.btn_multiplication.Text = "*";
+            this.btn_multiplication.Click += new System.EventHandler(this.btn_multiplication_Click);
             // 
-            // btn_plus
+            // btn_addition
             // 
-            this.btn_plus.AccessibleName = "plus ";
-            this.btn_plus.Location = new System.Drawing.Point(162, 240);
-            this.btn_plus.Name = "btn_plus";
-            this.btn_plus.Size = new System.Drawing.Size(40, 40);
-            this.btn_plus.TabIndex = 53;
-            this.btn_plus.Text = "+";
-            this.btn_plus.Click += new System.EventHandler(this.btn_plus_Click);
+            this.btn_addition.AccessibleName = "plus ";
+            this.btn_addition.Location = new System.Drawing.Point(162, 240);
+            this.btn_addition.Name = "btn_addition";
+            this.btn_addition.Size = new System.Drawing.Size(40, 40);
+            this.btn_addition.TabIndex = 53;
+            this.btn_addition.Text = "+";
+            this.btn_addition.Click += new System.EventHandler(this.btn_addition_Click);
             // 
-            // btn_minus
+            // btn_subtraction
             // 
-            this.btn_minus.AccessibleName = "minus ";
-            this.btn_minus.Location = new System.Drawing.Point(162, 200);
-            this.btn_minus.Name = "btn_minus";
-            this.btn_minus.Size = new System.Drawing.Size(40, 40);
-            this.btn_minus.TabIndex = 52;
-            this.btn_minus.Text = "-";
-            this.btn_minus.Click += new System.EventHandler(this.btn_minus_Click);
+            this.btn_subtraction.AccessibleName = "minus ";
+            this.btn_subtraction.Location = new System.Drawing.Point(162, 200);
+            this.btn_subtraction.Name = "btn_subtraction";
+            this.btn_subtraction.Size = new System.Drawing.Size(40, 40);
+            this.btn_subtraction.TabIndex = 52;
+            this.btn_subtraction.Text = "-";
+            this.btn_subtraction.Click += new System.EventHandler(this.btn_subtraction_Click);
             // 
             // btn0
             // 
@@ -318,14 +318,14 @@ namespace Calculator
             this.ClientSize = new System.Drawing.Size(270, 300);
             this.Controls.Add(this.btn_);
             this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.btn_sbros);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btnChangesign);
             this.Controls.Add(this.btnpoint);
-            this.Controls.Add(this.btn_ravno);
-            this.Controls.Add(this.btn_delenie);
-            this.Controls.Add(this.btn_umnojenie);
-            this.Controls.Add(this.btn_plus);
-            this.Controls.Add(this.btn_minus);
+            this.Controls.Add(this.btn_result);
+            this.Controls.Add(this.btn_division);
+            this.Controls.Add(this.btn_multiplication);
+            this.Controls.Add(this.btn_addition);
+            this.Controls.Add(this.btn_subtraction);
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btn9);
             this.Controls.Add(this.btn8);
@@ -356,120 +356,120 @@ namespace Calculator
 		{
 			Application.Run(new Calc());
 		}
-		/// <summary>
-		/// Обработчики для кнопок  обращаются к методу chislonaEkrane класса mehanizmcalkulyatora
-		/// и передают ему одну из постоянных (odin, dva, tri  и т.д.). Результат, возвращаемый методом,
-		/// присваивается  свойству Text текстового поля txtOutput.
-		/// </summary>
+        /// <summary>
+        /// Обработчики для кнопок  обращаются к методу onScreen класса calcMech
+        /// и передают ему одну из постоянных (one, two, three  и т.д.). Результат, возвращаемый методом,
+        /// присваивается  свойству Text текстового поля txtOutput.
+        /// </summary>
 
-			private void btn1_Click(object sender, System.EventArgs e)
+        private void btn1_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (odin);
-			}
+				txtOutput.Text = calcMech.onScreen(one);
+        }
 
 			private void btn2_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (dva);
+				txtOutput.Text = calcMech.onScreen(two);
 			}
 
 			private void btn3_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (tri);
+				txtOutput.Text = calcMech.onScreen(three);
 			}
 
 			private void btn4_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (chetire);
+				txtOutput.Text = calcMech.onScreen(four);
 			}
 
 			private void btn5_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (pyat);
+				txtOutput.Text = calcMech.onScreen(five);
 			}
 
 			private void btn6_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (shest);
+				txtOutput.Text = calcMech.onScreen(six);
 			}
 
 			private void btn7_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (sem);
+				txtOutput.Text = calcMech.onScreen(seven);
 			}
 
 			private void btn8_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (vosem);
+				txtOutput.Text = calcMech.onScreen(eight);
 			}
 
 			private void btn9_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (devyat);
+				txtOutput.Text = calcMech.onScreen(nine);
 			}
 
 			private void btn0_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.chislonaEkrane (nul);
+				txtOutput.Text = calcMech.onScreen(zero);
 			}
 
 			private void btnChangesign_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.ZnakChisla();
+				txtOutput.Text = calcMech.MarkNumber();
 			}
 
 			private void btnpoint_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.ZnakTochki();
+				txtOutput.Text = calcMech.MarkPoint();
 			}
-			/// <summary>
-			/// Обработчики кнопок действия калькулятора передают 
-			/// методу DeystvieCalculatora класса mehanizmcalkulyatora переменную перечисления Deystvie.
-			/// </summary>
-		
-			private void btn_delenie_Click(object sender, System.EventArgs e)
+        /// <summary>
+        /// Обработчики кнопок действия калькулятора передают 
+        /// методу DoCalc класса calcMech переменную перечисления Do.
+        /// </summary>
+
+            private void btn_division_Click(object sender, System.EventArgs e)
 			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Delenie);
+            calcMech.DoCalc(calcMech.Do.Division); 
+            }
+
+			private void btn_multiplication_Click(object sender, System.EventArgs e)
+			{
+            calcMech.DoCalc(calcMech.Do.Multiplication);
 			}
 
-			private void btn_umnojenie_Click(object sender, System.EventArgs e)
+			private void btn_subtraction_Click(object sender, System.EventArgs e)
 			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Umnojenie);
+            calcMech.DoCalc(calcMech.Do.Subtraction);
 			}
 
-			private void btn_minus_Click(object sender, System.EventArgs e)
+			private void btn_addition_Click(object sender, System.EventArgs e)
 			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Vichitanie);
+            calcMech.DoCalc(calcMech.Do.Addition);
 			}
 
-			private void btn_plus_Click(object sender, System.EventArgs e)
+			private void btn_result_Click(object sender, System.EventArgs e)
 			{
-				mehanizmcalkulyatora.DeystvieCalculatora (mehanizmcalkulyatora.Deystvie.Slojenie);
+				txtOutput.Text = calcMech.EqualMark();
+            calcMech.Clear();
 			}
 
-			private void btn_ravno_Click(object sender, System.EventArgs e)
+			private void btn_clear_Click(object sender, System.EventArgs e)
 			{
-				txtOutput.Text = mehanizmcalkulyatora.ZnakRavno();
-				mehanizmcalkulyatora.Sbros();
-			}
-
-			private void btn_sbros_Click(object sender, System.EventArgs e)
-			{
-				mehanizmcalkulyatora.Sbros();
+            calcMech.Clear();
 				txtOutput.Text = "0";
 			}
 	}
-	class mehanizmcalkulyatora
-	{
-	/// <summary>
-	///Создаем перечисление Deystvie, для определения одного из четырех действия калькулятора.
-	/// </summary>
-		public enum Deystvie:int
+	class calcMech
+    {
+        /// <summary>
+        ///Создаем перечисление Do, для определения одного из четырех действия калькулятора.
+        /// </summary>
+        public enum Do : int
 		{
 			NeopredelDeystvie = 0,
-			Slojenie = 1,
-			Vichitanie = 2,
-			Umnojenie = 3,
-			Delenie = 4
+            Addition = 1,
+            Subtraction = 2,
+            Multiplication = 3,
+            Division = 4
 		}
 
 	/// <summary>
@@ -477,7 +477,7 @@ namespace Calculator
 	/// которая будет использоваться для смены знака при нажатии клавиши (+/-)
 	/// </summary>
 
-		private static double peremennayaMinus = -1;
+		private static double peremennayaMinus = -1; /////////////////////////////////////////////
 
 		/// <summary>
 		/// Объвляем переменные, для работы калькулятора:
@@ -494,19 +494,19 @@ namespace Calculator
 	
 		private static double resultatVichisleniy;
 		private static string resultatOutput;
-		private static Deystvie tekusheeDeystvieCalculatora;
-		private static double pervoeChislo;
+		private static Do tekusheeDeystvieCalculatora; // DoCalc
+        private static double pervoeChislo;
 		private static double vtoroeChislo;
 		private static bool dobavlenierazryada;
 		private static bool ChislosTochkoy;
- 
-		/// <summary>
-		/// В конструкторе класса mehanizmcalkulyatora инициализируем переменные 
-		/// ChislosTochkoy и dobavlenierazryada - при запуске калькулятора на экране 
-		/// нет ни разрядности, ни десятичной части.
-		/// </summary>
 
-		public mehanizmcalkulyatora ()
+        /// <summary>
+        /// В конструкторе класса calcMech инициализируем переменные 
+        /// ChislosTochkoy и dobavlenierazryada - при запуске калькулятора на экране 
+        /// нет ни разрядности, ни десятичной части.
+        /// </summary>
+
+        public calcMech()
 		{
 			ChislosTochkoy = false;
 			dobavlenierazryada = false;
@@ -518,17 +518,17 @@ namespace Calculator
 		/// </summary>
 		
 
-		public static string chislonaEkrane (string najatayaKlavisha)
+		public static string onScreen(string najatayaKlavisha)
 		{
 			resultatOutput = resultatOutput + najatayaKlavisha;
 			return (resultatOutput);
 		}
-		/// <summary>
-		/// Метод, в котором определяется peremenDeystviya - одно значение перечисления Deystvie,
-		///в зависимости от выбора  клавиши +, -, *,  или /
-		/// </summary>
-	
-		public static void DeystvieCalculatora (Deystvie peremenDeystviya)
+        /// <summary>
+        /// Метод, в котором определяется peremenDeystviya - одно значение перечисления Do,
+        ///в зависимости от выбора  клавиши +, -, *,  или /
+        /// </summary>
+
+        public static void DoCalc (Do peremenDeystviya)
 		{
 			try
 			{
@@ -559,7 +559,7 @@ namespace Calculator
 	/// </summary>
 	
 
-		public static string ZnakChisla ()
+		public static string MarkNumber()
 		{
 			double tekusheeChislo;
 
@@ -577,7 +577,7 @@ namespace Calculator
 		/// </summary>
 	
 
-		public static string ZnakTochki ()
+		public static string MarkPoint()
 		{
 			if (!ChislosTochkoy && !dobavlenierazryada)
 			{
@@ -592,14 +592,14 @@ namespace Calculator
 			return (resultatOutput);
 		}
 
-	/// <summary>
-	/// При нажатии кнопки ZnakRavno обрабатываются значения 
-	/// переменнных pervoeChislo и vtoroeChislo, результат присваивается переменной resultatVichisleniy 
-	/// которая  затем преобразуется в resultatOutput.
-	/// </summary>
+        /// <summary>
+        /// При нажатии кнопки = (EqualMark) обрабатываются значения 
+        /// переменнных pervoeChislo и vtoroeChislo, результат присваивается переменной resultatVichisleniy 
+        /// которая  затем преобразуется в resultatOutput.
+        /// </summary>
 
 
-		public static string ZnakRavno ()
+        public static string EqualMark ()
 		{
 			bool proverkaOshibok = false;
 
@@ -610,26 +610,26 @@ namespace Calculator
 
 				switch (tekusheeDeystvieCalculatora)
 				{
-					case Deystvie.NeopredelDeystvie:
+					case Do.NeopredelDeystvie:
 						proverkaOshibok = false;
 						break;
 
-					case Deystvie.Slojenie:
+					case Do.Addition:
 						resultatVichisleniy = pervoeChislo + vtoroeChislo;
 						proverkaOshibok = true;
 						break;
 
-					case Deystvie.Vichitanie:
+					case Do.Subtraction:
 						resultatVichisleniy = pervoeChislo - vtoroeChislo;
 						proverkaOshibok = true;
 						break;
 
-					case Deystvie.Umnojenie:
+					case Do.Multiplication:
 						resultatVichisleniy = pervoeChislo * vtoroeChislo;
 						proverkaOshibok = true;
 						break;
 
-					case Deystvie.Delenie:
+					case Do.Division:
 						resultatVichisleniy = pervoeChislo / vtoroeChislo;
 						proverkaOshibok = true;
 						break;
@@ -650,13 +650,13 @@ namespace Calculator
 	/// При нажатии кнопки  С (сброс) значения переменных обнуляются.
 	/// </summary>
 
-		public static void Sbros ()
+		public static void Clear()
 		{
 			resultatVichisleniy = 0;
 			pervoeChislo = 0;
 			vtoroeChislo = 0;
 			resultatOutput = "";
-			tekusheeDeystvieCalculatora = Deystvie.NeopredelDeystvie;
+			tekusheeDeystvieCalculatora = Do.NeopredelDeystvie;
 			ChislosTochkoy = false;
 			dobavlenierazryada = false;			
 		}
