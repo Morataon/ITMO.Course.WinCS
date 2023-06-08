@@ -44,65 +44,65 @@
             Создаем перечисление Do, для определения одного из четырех действия калькулятора.
              </summary>
         </member>
-        <member name="F:Calculator.calcMech.peremennayaMinus">
+        <member name="F:Calculator.calcMech.negativeVariable">
             <summary>
             Объявляем и инициализируем переменную, 
             которая будет использоваться для смены знака при нажатии клавиши (+/-)
             </summary>
         </member>
-        <member name="F:Calculator.calcMech.resultatVichisleniy">
+        <member name="F:Calculator.calcMech.calculationResult">
             <summary>
             Объвляем переменные, для работы калькулятора:
-            resultatVichisleniy - переменная для хранения
-             промежуточного результата в механизме калькулятора
-             resultatOutput - переменная, значение которой будет сниматься с экрана и  выводиться на него.
-             tekusheeDeystvieCalculatora - хранение одного из действия калькулятора.
-             pervoeChislo - переменная, в которую будет записываться число на экране
+            calculationResult - переменная для хранения 
+             промежуточного результата в механизме калькулятора 
+             resultOutput - переменная, значение которой будет сниматься с экрана и  выводиться на него. 
+             nowDoCalc - хранение одного из действия калькулятора. 
+             firstNumber - переменная, в которую будет записываться число на экране 
               до нажатия на одну из четырех кнопок с действием.
-             vtoroeChislo - второе число на экране.
-             dobavlenierazryada при добавлении следующего  разряда эта переменная примет значение true;
-             ChislosTochkoy при добавлении десятичного разряда (знака точки) эта переменная примет значение true
+             secondNumber - второе число на экране
+             addDigit при добавлении следующего  разряда эта переменная примет значение true; 
+             dottedNumber при добавлении десятичного разряда (знака точки) эта переменная примет значение true
             </summary>
         </member>
         <member name="M:Calculator.calcMech.#ctor">
             <summary>
             В конструкторе класса calcMech инициализируем переменные 
-            ChislosTochkoy и dobavlenierazryada - при запуске калькулятора на экране 
+            dottedNumber и addinDigit - при запуске калькулятора на экране 
             нет ни разрядности, ни десятичной части.
             </summary>
         </member>
         <member name="M:Calculator.calcMech.onScreen(System.String)">
             <summary>
-            В этом методе переменная resultatOutput изменяется - при вводе числа ее значение перезаписывается.
+            В этом методе переменная resultOutput изменяется - при вводе числа ее значение перезаписывается.
             </summary>
         </member>
         <member name="M:Calculator.calcMech.DoCalc(Calculator.calcMech.Do)">
              <summary>
-             Метод, в котором определяется peremenDeystviya - одно значение перечисления Do,
+             Метод, в котором определяется mathOperation - одно значение перечисления Do,
             в зависимости от выбора  клавиши +, -, *,  или /
              </summary>
         </member>
         <member name="M:Calculator.calcMech.MarkNumber">
             <summary>
-            При нажатии  кнопки +/- число на экране - tekusheeChislo умножается на -1,
-             а затем результат снова присваивается переменной resultatOutput.
+            При нажатии  кнопки +/- число на экране - currentNumber умножается на -1,
+             а затем результат снова присваивается переменной resultOutput.
             </summary>
         </member>
         <member name="M:Calculator.calcMech.MarkPoint">
             <summary>
-            При нажатии кнопки ( , ) переменная resultatOutput приобретает дробную часть.
+            При нажатии кнопки ( , ) переменная resultOutput приобретает дробную часть.
             </summary>
         </member>
-        <member name="M:Calculator.calcMech.ZnakRavno">
+        <member name="M:Calculator.calcMech.EqualMark">
             <summary>
-            При нажатии кнопки ZnakRavno обрабатываются значения 
-            переменнных pervoeChislo и vtoroeChislo, результат присваивается переменной resultatVichisleniy 
-            которая  затем преобразуется в resultatOutput.
+            При нажатии кнопки = (EqualMark) обрабатываются значения 
+            переменнных firstNumber и secondNumber, результат присваивается переменной calculationResult 
+            которая  затем преобразуется в resultOutput.
             </summary>
         </member>
-        <member name="M:Calculator.calcMech.Sbros">
+        <member name="M:Calculator.calcMech.Clear">
             <summary>
-            При нажатии кнопки  С (сброс) значения переменных обнуляются.
+            При нажатии кнопки С (сброс) значения переменных обнуляются.
             </summary>
         </member>
     </members>
