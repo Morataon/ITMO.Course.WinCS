@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
@@ -29,10 +29,11 @@ namespace Calculator
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btn2;
         private System.Windows.Forms.Button btn1;
-        private System.ComponentModel.Container components = null;
+        private IContainer components;
+
         /// <summary>
-        /// Объявляем и инициализируем переменные, которые будут
-        ///  возникать на экране при нажатии соответствующих кнопок.
+        /// РћР±СЉСЏРІР»СЏРµРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚
+        ///  РІРѕР·РЅРёРєР°С‚СЊ РЅР° СЌРєСЂР°РЅРµ РїСЂРё РЅР°Р¶Р°С‚РёРё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РєРЅРѕРїРѕРє.
         /// </summary>
         private const string one = "1";
         private const string two = "2";
@@ -43,7 +44,7 @@ namespace Calculator
         private const string seven = "7";
         private const string eight = "8";
         private const string nine = "9";
-        private System.Windows.Forms.Button btn_;
+        private System.Windows.Forms.Button btn_sqrt;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem restartToolStripMenuItem;
         private ToolStripMenuItem restartToolStripMenuItem1;
@@ -52,6 +53,11 @@ namespace Calculator
         private ToolStripMenuItem calcTypeToolStripMenuItem;
         private ToolStripMenuItem defaultToolStripMenuItem;
         private ToolStripMenuItem engineerToolStripMenuItem;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.Button btn_Inverse;
+        private System.Windows.Forms.Button btn_Pow;
+        private System.Windows.Forms.Button btn_Square;
         private const string zero = "0";
 
         public Calc()
@@ -59,7 +65,7 @@ namespace Calculator
             TopMost = true;
             InitializeComponent();
             Cursor = Cursors.Hand;
-            // При запуске приложения на экране будет ноль
+            // РџСЂРё Р·Р°РїСѓСЃРєРµ РїСЂРёР»РѕР¶РµРЅРёСЏ РЅР° СЌРєСЂР°РЅРµ Р±СѓРґРµС‚ РЅРѕР»СЊ
             txtOutput.Text = "0";
 
         }
@@ -84,7 +90,7 @@ namespace Calculator
             if (!char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("Введите число");
+                MessageBox.Show("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ");
             }
 
         }
@@ -96,6 +102,7 @@ namespace Calculator
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calc));
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btn_clear = new System.Windows.Forms.Button();
@@ -116,7 +123,7 @@ namespace Calculator
             this.btn3 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
             this.btn1 = new System.Windows.Forms.Button();
-            this.btn_ = new System.Windows.Forms.Button();
+            this.btn_sqrt = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,6 +132,11 @@ namespace Calculator
             this.calcTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.defaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.engineerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btn_Inverse = new System.Windows.Forms.Button();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.btn_Pow = new System.Windows.Forms.Button();
+            this.btn_Square = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,6 +159,7 @@ namespace Calculator
             this.btn_clear.Size = new System.Drawing.Size(40, 80);
             this.btn_clear.TabIndex = 0;
             this.btn_clear.Text = "C";
+            this.toolTip1.SetToolTip(this.btn_clear, "РЎР±СЂРѕСЃ");
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // btnChangesign
@@ -157,6 +170,7 @@ namespace Calculator
             this.btnChangesign.Size = new System.Drawing.Size(40, 40);
             this.btnChangesign.TabIndex = 58;
             this.btnChangesign.Text = "+/-";
+            this.toolTip1.SetToolTip(this.btnChangesign, "РР·РјРµРЅРёС‚СЊ Р·РЅР°Рє С‡РёСЃР»Р°");
             this.btnChangesign.Click += new System.EventHandler(this.btnChangesign_Click);
             // 
             // btnpoint
@@ -167,6 +181,7 @@ namespace Calculator
             this.btnpoint.Size = new System.Drawing.Size(40, 40);
             this.btnpoint.TabIndex = 57;
             this.btnpoint.Text = ",";
+            this.toolTip1.SetToolTip(this.btnpoint, "Р§РёСЃР»Рѕ СЃ С‚РѕС‡РєРѕР№");
             this.btnpoint.Click += new System.EventHandler(this.btnpoint_Click);
             // 
             // btn_result
@@ -178,6 +193,7 @@ namespace Calculator
             this.btn_result.Size = new System.Drawing.Size(40, 80);
             this.btn_result.TabIndex = 56;
             this.btn_result.Text = "=";
+            this.toolTip1.SetToolTip(this.btn_result, "Р Р°РІРЅРѕ");
             this.btn_result.Click += new System.EventHandler(this.btn_result_Click);
             // 
             // btn_division
@@ -188,6 +204,7 @@ namespace Calculator
             this.btn_division.Size = new System.Drawing.Size(40, 40);
             this.btn_division.TabIndex = 55;
             this.btn_division.Text = "/";
+            this.toolTip1.SetToolTip(this.btn_division, "Р”РµР»РµРЅРёРµ");
             this.btn_division.Click += new System.EventHandler(this.btn_division_Click);
             // 
             // btn_multiplication
@@ -198,6 +215,7 @@ namespace Calculator
             this.btn_multiplication.Size = new System.Drawing.Size(40, 40);
             this.btn_multiplication.TabIndex = 54;
             this.btn_multiplication.Text = "*";
+            this.toolTip1.SetToolTip(this.btn_multiplication, "РЈРјРЅРѕР¶РµРЅРёРµ");
             this.btn_multiplication.Click += new System.EventHandler(this.btn_multiplication_Click);
             // 
             // btn_addition
@@ -208,6 +226,7 @@ namespace Calculator
             this.btn_addition.Size = new System.Drawing.Size(40, 40);
             this.btn_addition.TabIndex = 53;
             this.btn_addition.Text = "+";
+            this.toolTip1.SetToolTip(this.btn_addition, "РЎР»РѕР¶РµРЅРёРµ");
             this.btn_addition.Click += new System.EventHandler(this.btn_addition_Click);
             // 
             // btn_subtraction
@@ -218,6 +237,7 @@ namespace Calculator
             this.btn_subtraction.Size = new System.Drawing.Size(40, 40);
             this.btn_subtraction.TabIndex = 52;
             this.btn_subtraction.Text = "-";
+            this.toolTip1.SetToolTip(this.btn_subtraction, "Р’С‹С‡РёС‚Р°РЅРёРµ");
             this.btn_subtraction.Click += new System.EventHandler(this.btn_subtraction_Click);
             // 
             // btn0
@@ -320,13 +340,15 @@ namespace Calculator
             this.btn1.Text = "1";
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
-            // btn_
+            // btn_sqrt
             // 
-            this.btn_.AccessibleName = "divide ";
-            this.btn_.Location = new System.Drawing.Point(27, 66);
-            this.btn_.Name = "btn_";
-            this.btn_.Size = new System.Drawing.Size(40, 40);
-            this.btn_.TabIndex = 61;
+            this.btn_sqrt.AccessibleName = "divide ";
+            this.btn_sqrt.Location = new System.Drawing.Point(27, 66);
+            this.btn_sqrt.Name = "btn_sqrt";
+            this.btn_sqrt.Size = new System.Drawing.Size(40, 40);
+            this.btn_sqrt.TabIndex = 61;
+            this.btn_sqrt.Text = "2в€љ";
+            this.btn_sqrt.Click += new System.EventHandler(this.btn_sqrt_Click);
             // 
             // menuStrip1
             // 
@@ -353,21 +375,21 @@ namespace Calculator
             // restartToolStripMenuItem1
             // 
             this.restartToolStripMenuItem1.Name = "restartToolStripMenuItem1";
-            this.restartToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.restartToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.restartToolStripMenuItem1.Text = "Restart";
             this.restartToolStripMenuItem1.Click += new System.EventHandler(this.restartToolStripMenuItem1_Click);
             // 
             // minimizeToolStripMenuItem
             // 
             this.minimizeToolStripMenuItem.Name = "minimizeToolStripMenuItem";
-            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.minimizeToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.minimizeToolStripMenuItem.Text = "Minimize";
             this.minimizeToolStripMenuItem.Click += new System.EventHandler(this.minimizeToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -383,21 +405,61 @@ namespace Calculator
             // defaultToolStripMenuItem
             // 
             this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
-            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.defaultToolStripMenuItem.Text = "Default";
             // 
             // engineerToolStripMenuItem
             // 
             this.engineerToolStripMenuItem.Name = "engineerToolStripMenuItem";
-            this.engineerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.engineerToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.engineerToolStripMenuItem.Text = "Engineer";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.Tag = "Р”РµР»РµРЅРёРµ";
+            // 
+            // btn_Inverse
+            // 
+            this.btn_Inverse.AccessibleName = "divide ";
+            this.btn_Inverse.Location = new System.Drawing.Point(85, 66);
+            this.btn_Inverse.Name = "btn_Inverse";
+            this.btn_Inverse.Size = new System.Drawing.Size(40, 40);
+            this.btn_Inverse.TabIndex = 63;
+            this.btn_Inverse.Text = "1/x";
+            this.toolTip1.SetToolTip(this.btn_Inverse, "Р’С‹С‡РёСЃР»СЏРµС‚ РѕР±СЂР°С‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ С‡РёСЃР»Р°");
+            this.btn_Inverse.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_Pow
+            // 
+            this.btn_Pow.AccessibleName = "divide ";
+            this.btn_Pow.Location = new System.Drawing.Point(145, 66);
+            this.btn_Pow.Name = "btn_Pow";
+            this.btn_Pow.Size = new System.Drawing.Size(40, 40);
+            this.btn_Pow.TabIndex = 64;
+            this.btn_Pow.Text = "^";
+            this.toolTip1.SetToolTip(this.btn_Pow, "Р’РѕР·РІРѕРґРёС‚ С‡РёСЃР»Рѕ РІ Р·Р°РґР°РЅРЅСѓСЋ СЃС‚РµРїРµРЅСЊ");
+            this.btn_Pow.Click += new System.EventHandler(this.btn_Pow_Click);
+            // 
+            // btn_Square
+            // 
+            this.btn_Square.AccessibleName = "divide ";
+            this.btn_Square.Location = new System.Drawing.Point(202, 66);
+            this.btn_Square.Name = "btn_Square";
+            this.btn_Square.Size = new System.Drawing.Size(40, 40);
+            this.btn_Square.TabIndex = 65;
+            this.btn_Square.Text = "^2";
+            this.toolTip1.SetToolTip(this.btn_Square, "РљРІР°РґСЂР°С‚ С‡РёСЃР»Р°");
+            this.btn_Square.Click += new System.EventHandler(this.btn_Square_Click);
             // 
             // Calc
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(270, 300);
-            this.Controls.Add(this.btn_);
+            this.Controls.Add(this.btn_Square);
+            this.Controls.Add(this.btn_Pow);
+            this.Controls.Add(this.btn_Inverse);
+            this.Controls.Add(this.btn_sqrt);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btnChangesign);
@@ -442,9 +504,9 @@ namespace Calculator
             Application.Run(new Calc());
         }
         /// <summary>
-        /// Обработчики для кнопок  обращаются к методу onScreen класса calcMech
-        /// и передают ему одну из постоянных (one, two, three  и т.д.). Результат, возвращаемый методом,
-        /// присваивается  свойству Text текстового поля txtOutput.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРєРё РґР»СЏ РєРЅРѕРїРѕРє  РѕР±СЂР°С‰Р°СЋС‚СЃСЏ Рє РјРµС‚РѕРґСѓ onScreen РєР»Р°СЃСЃР° calcMech
+        /// Рё РїРµСЂРµРґР°СЋС‚ РµРјСѓ РѕРґРЅСѓ РёР· РїРѕСЃС‚РѕСЏРЅРЅС‹С… (one, two, three  Рё С‚.Рґ.). Р РµР·СѓР»СЊС‚Р°С‚, РІРѕР·РІСЂР°С‰Р°РµРјС‹Р№ РјРµС‚РѕРґРѕРј,
+        /// РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ  СЃРІРѕР№СЃС‚РІСѓ Text С‚РµРєСЃС‚РѕРІРѕРіРѕ РїРѕР»СЏ txtOutput.
         /// </summary>
 
         private void btn1_Click(object sender, System.EventArgs e)
@@ -507,8 +569,8 @@ namespace Calculator
             txtOutput.Text = calcMech.MarkPoint();
         }
         /// <summary>
-        /// Обработчики кнопок действия калькулятора передают 
-        /// методу DoCalc класса calcMech переменную перечисления Do.
+        /// РћР±СЂР°Р±РѕС‚С‡РёРєРё РєРЅРѕРїРѕРє РґРµР№СЃС‚РІРёСЏ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР° РїРµСЂРµРґР°СЋС‚ 
+        /// РјРµС‚РѕРґСѓ DoCalc РєР»Р°СЃСЃР° calcMech РїРµСЂРµРјРµРЅРЅСѓСЋ РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ Do.
         /// </summary>
 
         private void btn_division_Click(object sender, System.EventArgs e)
@@ -563,11 +625,31 @@ namespace Calculator
         {
             Close();
         }
+
+        private void btn_sqrt_Click(object sender, EventArgs e) 
+        {
+            txtOutput.Text = calcMech.SquareRoot();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtOutput.Text = calcMech.Inverse();
+        }
+
+        private void btn_Pow_Click(object sender, EventArgs e)
+        {
+            calcMech.DoCalc(calcMech.Do.Power);
+        }
+
+        private void btn_Square_Click(object sender, EventArgs e)
+        {
+            txtOutput.Text = calcMech.Square();
+        }
     }
     class calcMech
     {
         /// <summary>
-        ///Создаем перечисление Do, для определения одного из четырех действия калькулятора.
+        ///РЎРѕР·РґР°РµРј РїРµСЂРµС‡РёСЃР»РµРЅРёРµ Do, РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РѕРґРЅРѕРіРѕ РёР· С‡РµС‚С‹СЂРµС… РґРµР№СЃС‚РІРёСЏ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°.
         /// </summary>
         public enum Do : int
         {
@@ -575,27 +657,28 @@ namespace Calculator
             Addition = 1,
             Subtraction = 2,
             Multiplication = 3,
-            Division = 4
+            Division = 4,
+            Power = 5
         }
 
         /// <summary>
-        /// Объявляем и инициализируем переменную, 
-        /// которая будет использоваться для смены знака при нажатии клавиши (+/-)
+        /// РћР±СЉСЏРІР»СЏРµРј Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ, 
+        /// РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РґР»СЏ СЃРјРµРЅС‹ Р·РЅР°РєР° РїСЂРё РЅР°Р¶Р°С‚РёРё РєР»Р°РІРёС€Рё (+/-)
         /// </summary>
 
         private static double negativeVariable = -1;
 
         /// <summary>
-        /// Объвляем переменные, для работы калькулятора:
-        /// calculationResult - переменная для хранения 
-        ///  промежуточного результата в механизме калькулятора 
-        ///  resultOutput - переменная, значение которой будет сниматься с экрана и  выводиться на него. 
-        ///  nowDoCalc - хранение одного из действия калькулятора. 
-        ///  firstNumber - переменная, в которую будет записываться число на экране 
-        ///   до нажатия на одну из четырех кнопок с действием.
-        ///  secondNumber - второе число на экране
-        ///  addDigit при добавлении следующего  разряда эта переменная примет значение true; 
-        ///  dottedNumber при добавлении десятичного разряда (знака точки) эта переменная примет значение true
+        /// РћР±СЉРІР»СЏРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ, РґР»СЏ СЂР°Р±РѕС‚С‹ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°:
+        /// calculationResult - РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ 
+        ///  РїСЂРѕРјРµР¶СѓС‚РѕС‡РЅРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р° РІ РјРµС…Р°РЅРёР·РјРµ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР° 
+        ///  resultOutput - РїРµСЂРµРјРµРЅРЅР°СЏ, Р·РЅР°С‡РµРЅРёРµ РєРѕС‚РѕСЂРѕР№ Р±СѓРґРµС‚ СЃРЅРёРјР°С‚СЊСЃСЏ СЃ СЌРєСЂР°РЅР° Рё  РІС‹РІРѕРґРёС‚СЊСЃСЏ РЅР° РЅРµРіРѕ. 
+        ///  nowDoCalc - С…СЂР°РЅРµРЅРёРµ РѕРґРЅРѕРіРѕ РёР· РґРµР№СЃС‚РІРёСЏ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°. 
+        ///  firstNumber - РїРµСЂРµРјРµРЅРЅР°СЏ, РІ РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµС‚ Р·Р°РїРёСЃС‹РІР°С‚СЊСЃСЏ С‡РёСЃР»Рѕ РЅР° СЌРєСЂР°РЅРµ 
+        ///   РґРѕ РЅР°Р¶Р°С‚РёСЏ РЅР° РѕРґРЅСѓ РёР· С‡РµС‚С‹СЂРµС… РєРЅРѕРїРѕРє СЃ РґРµР№СЃС‚РІРёРµРј.
+        ///  secondNumber - РІС‚РѕСЂРѕРµ С‡РёСЃР»Рѕ РЅР° СЌРєСЂР°РЅРµ
+        ///  addDigit РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЃР»РµРґСѓСЋС‰РµРіРѕ  СЂР°Р·СЂСЏРґР° СЌС‚Р° РїРµСЂРµРјРµРЅРЅР°СЏ РїСЂРёРјРµС‚ Р·РЅР°С‡РµРЅРёРµ true; 
+        ///  dottedNumber РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ СЂР°Р·СЂСЏРґР° (Р·РЅР°РєР° С‚РѕС‡РєРё) СЌС‚Р° РїРµСЂРµРјРµРЅРЅР°СЏ РїСЂРёРјРµС‚ Р·РЅР°С‡РµРЅРёРµ true
         /// </summary>
 
         private static double calculationResult;
@@ -607,9 +690,9 @@ namespace Calculator
         private static bool dottedNumber;
 
         /// <summary>
-        /// В конструкторе класса calcMech инициализируем переменные 
-        /// dottedNumber и addinDigit - при запуске калькулятора на экране 
-        /// нет ни разрядности, ни десятичной части.
+        /// Р’ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРµ РєР»Р°СЃСЃР° calcMech РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ 
+        /// dottedNumber Рё addinDigit - РїСЂРё Р·Р°РїСѓСЃРєРµ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР° РЅР° СЌРєСЂР°РЅРµ 
+        /// РЅРµС‚ РЅРё СЂР°Р·СЂСЏРґРЅРѕСЃС‚Рё, РЅРё РґРµСЃСЏС‚РёС‡РЅРѕР№ С‡Р°СЃС‚Рё.
         /// </summary>
 
         public calcMech()
@@ -618,9 +701,45 @@ namespace Calculator
             addDigit = false;
         }
 
+        public static string SquareRoot()
+        {
+            double currentNumber;
+
+            if (resultOutput != "")
+            {
+                currentNumber = Convert.ToDouble(resultOutput);
+                resultOutput = Convert.ToString(Math.Sqrt(currentNumber));
+            }
+            return (resultOutput);
+        }
+
+        public static string Square()
+        {
+            double currentNumber;
+
+            if (resultOutput != "")
+            {
+                currentNumber = Convert.ToDouble(resultOutput);
+                resultOutput = Convert.ToString(currentNumber * currentNumber);
+            }
+            return (resultOutput);
+        }
+
+        public static string Inverse()
+        {
+            double currentNumber;
+
+            if (resultOutput != "")
+            {
+                currentNumber = Convert.ToDouble(resultOutput);
+                resultOutput = Convert.ToString(1 / currentNumber);
+            }
+            return (resultOutput);
+        }
+
 
         /// <summary>
-        /// В этом методе переменная resultOutput изменяется - при вводе числа ее значение перезаписывается.
+        /// Р’ СЌС‚РѕРј РјРµС‚РѕРґРµ РїРµСЂРµРјРµРЅРЅР°СЏ resultOutput РёР·РјРµРЅСЏРµС‚СЃСЏ - РїСЂРё РІРІРѕРґРµ С‡РёСЃР»Р° РµРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµР·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ.
         /// </summary>
 
 
@@ -630,8 +749,8 @@ namespace Calculator
             return (resultOutput);
         }
         /// <summary>
-        /// Метод, в котором определяется mathOperation - одно значение перечисления Do,
-        ///в зависимости от выбора  клавиши +, -, *,  или /
+        /// РњРµС‚РѕРґ, РІ РєРѕС‚РѕСЂРѕРј РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ mathOperation - РѕРґРЅРѕ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ Do,
+        ///РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±РѕСЂР°  РєР»Р°РІРёС€Рё +, -, *,  РёР»Рё /
         /// </summary>
 
         public static void DoCalc(Do mathOperation)
@@ -659,8 +778,8 @@ namespace Calculator
 
 
         /// <summary>
-        /// При нажатии  кнопки +/- число на экране - currentNumber умножается на -1,
-        ///  а затем результат снова присваивается переменной resultOutput.
+        /// РџСЂРё РЅР°Р¶Р°С‚РёРё  РєРЅРѕРїРєРё +/- С‡РёСЃР»Рѕ РЅР° СЌРєСЂР°РЅРµ - currentNumber СѓРјРЅРѕР¶Р°РµС‚СЃСЏ РЅР° -1,
+        ///  Р° Р·Р°С‚РµРј СЂРµР·СѓР»СЊС‚Р°С‚ СЃРЅРѕРІР° РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ РїРµСЂРµРјРµРЅРЅРѕР№ resultOutput.
         /// </summary>
 
 
@@ -678,7 +797,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// При нажатии кнопки ( , ) переменная resultOutput приобретает дробную часть.
+        /// РџСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё ( , ) РїРµСЂРµРјРµРЅРЅР°СЏ resultOutput РїСЂРёРѕР±СЂРµС‚Р°РµС‚ РґСЂРѕР±РЅСѓСЋ С‡Р°СЃС‚СЊ.
         /// </summary>
 
 
@@ -698,9 +817,9 @@ namespace Calculator
         }
 
         /// <summary>
-        /// При нажатии кнопки = (EqualMark) обрабатываются значения 
-        /// переменнных firstNumber и secondNumber, результат присваивается переменной calculationResult 
-        /// которая  затем преобразуется в resultOutput.
+        /// РџСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё = (EqualMark) РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‚СЃСЏ Р·РЅР°С‡РµРЅРёСЏ 
+        /// РїРµСЂРµРјРµРЅРЅРЅС‹С… firstNumber Рё secondNumber, СЂРµР·СѓР»СЊС‚Р°С‚ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ РїРµСЂРµРјРµРЅРЅРѕР№ calculationResult 
+        /// РєРѕС‚РѕСЂР°СЏ  Р·Р°С‚РµРј РїСЂРµРѕР±СЂР°Р·СѓРµС‚СЃСЏ РІ resultOutput.
         /// </summary>
 
 
@@ -739,6 +858,11 @@ namespace Calculator
                         checkErrors = true;
                         break;
 
+                    case Do.Power:
+                        calculationResult = Math.Pow(firstNumber, secondNumber);
+                        checkErrors = true;
+                        break;
+
                     default:
                         checkErrors = false;
                         break;
@@ -752,7 +876,7 @@ namespace Calculator
         }
 
         /// <summary>
-        /// При нажатии кнопки С (сброс) значения переменных обнуляются.
+        /// РџСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё РЎ (СЃР±СЂРѕСЃ) Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С… РѕР±РЅСѓР»СЏСЋС‚СЃСЏ.
         /// </summary>
 
         public static void Clear()
